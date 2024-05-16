@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Log Sleepiness</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+  <ion-content>
+    <div style="margin-top: 5%;">
+      <p style="font-size: 15pt; text-align: center; background-color: aquamarine; padding: 1%;">How sleepy are you?</p>
+    </div>
+    <div style="margin: 3%;">
+      <ion-range min="1" max="7" step="1" snaps="true" [(ngModel)]="sleepinessValue">
+        <ion-label slot="start">1</ion-label>
+        <ion-label slot="end">7</ion-label>
+      </ion-range>
+    </div>
+    
+    
+  
+  <p style="margin: 3%;">1: Feeling active, vital, alert, or wide awake.<br><br>
+    2: Functioning at high levels, but not at peak; able to concentrate.<br><br>
+    3. Awake, but relaxed; responsive but not fully alert.<br><br>
+    4. Somewhat foggy, let down.<br><br>
+    5. Foggy; losing interest in remaining awake; slowed down.<br><br>
+    6. Sleepy, woozy, fighting sleep; prefer to lie down.<br><br>
+    7. 'No longer fighting sleep, sleep onset soon; having dream-like thoughts.</p>
+
+    <ion-button style="margin-top: 10%;" expand="block" (click)="logSleepiness()" type="submit">Log Sleepiness</ion-button>
+  </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons style="display: flex; justify-content: space-between; width: 100%;">
+      <ion-button style="flex: 1; text-align: center;" (click)="navigateTo('overnight-sleep')">Log Sleep</ion-button>
+      <ion-button style="flex: 1; text-align: center; border-bottom: 3px solid blue;">Log Sleepiness</ion-button>
+      <ion-button style="flex: 1; text-align: center;" (click)="navigateTo('view-sleep-data')">View Logs</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

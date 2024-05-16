@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Overnight Sleep Log</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <form (ngSubmit)="logSleep()" style="width: 100%;">
+      <ion-item style="margin: 10%;">
+        <div style="display: flex; flex-direction: column;">
+          <ion-label>Went to Bed (Time)</ion-label>
+          <ion-button (click)="showDateTimePicker('start')">Select Start Time</ion-button>
+          <ion-datetime *ngIf="showStartPicker" displayFormat="HH:mm" [(ngModel)]="sleepStart" name="sleepStart"></ion-datetime>
+        </div>
+      </ion-item>
+      
+      <ion-item style="margin: 10%;">
+        <div style="display: flex; flex-direction: column;">
+          <ion-label>Woke Up (Time)</ion-label>
+          <ion-button (click)="showDateTimePicker('end')">Select End Time</ion-button>
+          <ion-datetime *ngIf="showEndPicker" displayFormat="HH:mm" [(ngModel)]="sleepEnd" name="sleepEnd"></ion-datetime>
+        </div>
+      </ion-item>
+      <ion-button expand="block" type="submit">Log Sleep</ion-button>
+    </form>
+  </div>
+</ion-content>
+
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons style="display: flex; justify-content: space-between; width: 100%;">
+      <ion-button style="flex: 1; text-align: center; border-bottom: 3px solid blue;">Log Sleep</ion-button>
+      <ion-button style="flex: 1; text-align: center;" (click)="navigateTo('log-sleepiness')">Log Sleepiness</ion-button>
+      <ion-button style="flex: 1; text-align: center;" (click)="navigateTo('view-sleep-data')">View Logs</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

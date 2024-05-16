@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Logged Sleep Data</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-segment style="padding:1%" [(ngModel)]="activeSegment">
+  <ion-segment-button value="sleep">
+    <ion-label>Sleep</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="sleepiness">
+    <ion-label>Sleepiness</ion-label>
+  </ion-segment-button>
+</ion-segment>
+
+<ion-content>
+  <ion-list *ngIf="activeSegment === 'sleep'">
+    <ion-item *ngFor="let sleepData of loggedSleepData">
+      <ion-label>
+        <h2>Date: {{ sleepData.dateString() }}</h2>
+        <p>Duration: {{ sleepData.summaryString() }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="activeSegment === 'sleepiness'">
+    <ion-item *ngFor="let sleepinessData of loggedSleepinessData" class="full-width-item">
+      <ion-label>
+        <h2>Sleepiness Level: {{ sleepinessData.summaryString() }}</h2>
+        <p>Reported at: {{ sleepinessData.formattedDate() }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+  
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons style="display: flex; justify-content: space-between; width: 100%;">
+      <ion-button style="flex: 1; text-align: center;" (click)="navigateTo('overnight-sleep')">Log Sleep</ion-button>
+      <ion-button style="flex: 1; text-align: center;" (click)="navigateTo('log-sleepiness')">Log Sleepiness</ion-button>
+      <ion-button style="flex: 1; text-align: center; border-bottom: 3px solid blue;">View Logs</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
